@@ -3967,7 +3967,7 @@
 	"markers": [
 		{
 			"TrackPath": 2,
-			"TrackX": 458,
+			"TrackX": 2582,
 			"PAStationRightDoors": false,
 			"PAStationID": 101,
 			"PAStationPath": 2,
@@ -4000,7 +4000,7 @@
 		},
 		{
 			"TrackPath": 2,
-			"TrackX": 1865,
+			"TrackX": 3982,
 			"PAStationRightDoors": false,
 			"PAStationID": 102,
 			"PAStationPath": 2,
@@ -4011,7 +4011,7 @@
 		},
 		{
 			"TrackPath": 2,
-			"TrackX": 4390,
+			"TrackX": 6516,
 			"PAStationRightDoors": false,
 			"PAStationID": 103,
 			"PAStationPath": 2,
@@ -4044,7 +4044,7 @@
 		},
 		{
 			"TrackPath": 2,
-			"TrackX": 7169,
+			"TrackX": 9296,
 			"PAStationRightDoors": false,
 			"PAStationID": 104,
 			"PAStationPath": 2,
@@ -4055,10 +4055,21 @@
 		},
 		{
 			"TrackPath": 2,
-			"TrackX": 8762,
+			"TrackX": 10886,
 			"PAStationRightDoors": false,
 			"PAStationID": 105,
 			"PAStationPath": 2,
+			"Angles": "{0.0036 86.7403 0}",
+			"PAStationName": "Касторская",
+			"Pos": "[-13872.4395 -211.0297 1670.6476]",
+			"PAType": 1
+		},
+		{
+			"TrackPath": 1,
+			"TrackX": 11182,
+			"PAStationRightDoors": false,
+			"PAStationID": 120,
+			"PAStationPath": 1,
 			"Angles": "{0.0036 86.7403 0}",
 			"PAStationName": "Касторская",
 			"Pos": "[-13872.4395 -211.0297 1670.6476]",
@@ -4070,6 +4081,17 @@
 			"PAStationRightDoors": false,
 			"PAStationID": 105,
 			"PAStationPath": 1,
+			"Angles": "{0.0036 86.7403 0}",
+			"PAStationName": "Касторская",
+			"Pos": "[-13872.4395 -211.0297 1670.6476]",
+			"PAType": 1
+		},
+		{
+			"TrackPath": 2,
+			"TrackX": 385,
+			"PAStationRightDoors": false,
+			"PAStationID": 120,
+			"PAStationPath": 2,
 			"Angles": "{0.0036 86.7403 0}",
 			"PAStationName": "Касторская",
 			"Pos": "[-13872.4395 -211.0297 1670.6476]",
