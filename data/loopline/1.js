@@ -59,7 +59,7 @@ lines['loopline']['1'] = [
         },
         joints: [
             { x: 2.5, name: '187', limit: 0, gmod: { Kanava: true } },
-            { x: 2.5 + 62.5, name: '189', limit: 60, later: { 60: 2 }, gmod: { Routes: [{ PogashenieARS: "0004" }] } },
+            { x: 2.5 + 62.5, name: '189', limit: 60, later: { 60: 2 }, gmod: { Approve0: true, Routes: [{ PogashenieARS: "0004" }] } },
             { x: 2.5 + 62.5 + 50, name: '191', limit: 60, later: { 40: 3, 60: 2 } },
             { x: 2.5 + 62.5 + 50 + 37.5, name: '191а', limit: 60, later: { 40: 2, 60: 2 } },
             { x: 2.5 + 62.5 + 50 + 37.5 + 112.5, name: '191б', limit: 60, later: { 40: 2, 60: 2 } },
@@ -124,7 +124,7 @@ lines['loopline']['1'] = [
         },
         joints: [
             { x: 8 - 12.5, name: '209', limit: 0, gmod: { Kanava: true } },
-            { x: 8 + 62.5, name: '211', limit: 60, later: { 60: 3 }, gmod: { Routes: [{ PogashenieARS: "0004" }] } },
+            { x: 8 + 62.5, name: '211', limit: 60, later: { 60: 3 }, gmod: { Approve0: true, Routes: [{ PogashenieARS: "2004" }] } },
             { x: 8 + 62.5 + 50, name: '213', limit: 60, later: { 40: 3, 60: 3 } },
             { x: 8 + 62.5 + 50 + 37.5, name: '213а', limit: 60, later: { 40: 3, 60: 3 } },
             { x: 8 + 62.5 + 50 + 37.5 + 62.5, name: '213б', limit: 60, later: { 40: 3, 60: 3 } }, //, 70: 3, 80: 2
@@ -175,6 +175,9 @@ lines['loopline']['1'] = [
             { joint: '231',  name: '101М',  lenses:  'X', guard: 35, autostop: 3 },       
             { joint: '213в', name:   'ОП',  lenses: 'ZR', left: true, autostop: 3, back: true, gmod: { name: 'PNOP', Letter: "OP", DTM: true } },     
         ],
+        switches: [
+			{ x: 8 + 62.5 + 50 + 37.5 + 62.5 + 200 + 150 + 200 + 50, name: '7', left: false, trailing: false },
+		],
         mks: [
         ],
     },
@@ -194,7 +197,7 @@ lines['loopline']['1'] = [
         },
         joints: [
             { x: 7 + 12.5, name: '229', limit: 0 },
-            { x: 7 + 12.5 + 50, name: '231', limit: 60, later: { 60: 1 }, gmod: { Routes: [{ PogashenieARS: "0004" }] } },
+            { x: 7 + 12.5 + 50, name: '231', limit: 60, later: { 60: 1 }, gmod: { Approve0: true, Routes: [{ PogashenieARS: "0004" }] } },
             { x: 7 + 12.5 + 50 + 50, name: '101', limit: 70, later: { 40: 1, 60: 1, 70: 1 } },
             { x: 7 + 12.5 + 50 + 50 + 62.5, name: '101а', limit: 70, later: { 40: 1, 60: 1, 70: 1 } },
             { x: 7 + 12.5 + 50 + 50 + 62.5 + 50, name: '101б', limit: 70, later: { 40: 1, 60: 1 } },
@@ -214,10 +217,10 @@ lines['loopline']['1'] = [
             { x: 2777 - 7.5 + 12.5 + 12.5 - 75 - 75, name: '115', limit: 60 },
             { x: 2777 - 7.5 + 12.5 + 12.5 - 75 - 12.5, name: '117', limit: 60 },
             { x: 2777 - 7.5, name: '119', limit: 60, gmod: { Kanava: true } },
-            { x: 2777 - 7.5 + 12.5 + 62.5, name: '121', limit: 40, later: { 40: -1 } },
-            { x: 2777 - 7.5 + 12.5 + 62.5 + 50, name: '123', limit: 0 },
-            { x: 2777 - 7.5 + 12.5 + 62.5 + 50 + 50, name: '123а', limit: 0 },
-            { x: 2777 - 7.5 + 12.5 + 62.5 + 50 + 50 + 75, name: '123б', limit: 0 },
+            { x: 2777 - 7.5 + 62.5, name: '121', limit: 40, later: { 40: -1 } },
+            { x: 2777 - 7.5 + 62.5 + 50, name: '123', limit: 0 },
+            { x: 2777 - 7.5 + 62.5 + 50 + 62.5, name: '123а', limit: 0 },
+            { x: 2777 - 7.5 + 62.5 + 50 + 62.5 + 75, name: '123б', limit: 0 },
         ],
         signals: [
             { joint: '231',  name: '101М',lenses: 'YY-GR', guard: 35, service: 80, autostop: 3,          y: '101в', g: 'NEXT_y', gmod: { Krons: "MM" } },  
@@ -230,7 +233,7 @@ lines['loopline']['1'] = [
             { joint: '111б', name: '115', lenses: 'YY-GR', guard: 60, service: 35, autostop: 3,          y: '115', yg: 'NEXT_y' },  //, g: 'NEXT_yg'
             { joint: '113',  name: '117', lenses: 'YY-GR', guard: 60, service: 35, autostop: 1,          y: '117', yg: 'NEXT_y'},   //, g: 'NEXT_g' 
             { joint: '115',  name: '119', lenses: 'YY-GR', guard: 60, service: 35, autostop: 1,shift: 13,y: '119', yg: 'NEXT_yg' },  
-            { joint: '117',  name: '121', lenses: 'YY-GR', guard: 60, autostop: 1,                      yg:'121' },     
+            { joint: '117',  name: '121', lenses: 'YY-GR', guard: 60, autostop: 1, shift: 6,            yg:'121' },     
             { joint: '121', name: 'ПР-123М', lenses: 'X',  guard: 35, autostop: 3 },       
             { joint: '123а', name: 'ПР-125', lenses: 'X', autostop: 3 },       
         ],
@@ -240,7 +243,7 @@ lines['loopline']['1'] = [
     },
     {
         name: 'Парк',
-        arsDrawBreakpoint: 7,
+        arsDrawBreakpoint: 8,
         arsAllSteps: false,
         tStay: 30,
         K: 1,
@@ -253,8 +256,9 @@ lines['loopline']['1'] = [
             2356: 'T',
         },
         joints: [
-            { x: -7.5, name: '119', limit: 0, gmod: { Kanava: true } },
-            { x: -7.5 + 62.5, name: '121', limit: 60, later: { 40: -1, 60: 1 }, gmod: { Routes: [{ PogashenieARS: "004" }] } },
+            { x: -7.5 - 62.5, name: '117', limit: 0 },
+            { x: -7.5, name: '119', limit: 60, later: { 60: 2 }, gmod: { Kanava: true } },
+            { x: -7.5 + 62.5, name: '121', limit: 60, later: { 40: -1, 60: 1 }, gmod: { Approve0: true, Routes: [{ PogashenieARS: "004" }] } },
             { x: -7.5 + 62.5 + 50, name: '123', limit: 70, later: { 40: 2, 60: 1, 70: 1 } },
             { x: -7.5 + 12.5 + 62.5 + 100, name: '123а', limit: 70, later: { 40: 1, 60: 1, 70: 1 } },
             { x: -7.5 + 12.5 + 62.5 + 100 + 75, name: '123б', limit: 70, later: { 40: 1, 60: 1 } },
@@ -277,9 +281,9 @@ lines['loopline']['1'] = [
             { x: 2518 + 62.5 + 50 + 37.5 + 62.5, name: '145б', limit: 0 },
         ],
         signals: [  
-            { joint: '121',name: 'ПР-123М',lenses:  'WYG-RW',  guard: 35, service: 35, autostop: 3, g: '123б' },       
-            { joint: '123а',name:'ПР-125М',lenses:'BWY-YGR-ZW',guard: 80, service: 80, autostop: 3, y: '125',  g: 'NEXT_y', gmod: { Krons: "LLD", LetterK: true } },       
-            { joint: '125', name: 'ПР-127',lenses:'BWY-YGR-ZW',guard: 80, service: 80, autostop: 1, y: '127а', g: 'NEXT_y', gmod: { Krons: "SLD" } },     
+            { joint: '121',name: 'ПР-123М',lenses:  'WYG-RW',  guard: 35, service: 35, autostop: 3, g: '125' },       
+            { joint: '123а',name:'ПР-125М',lenses:'BWY-YGR-ZW',guard: 80, service: 80, autostop: 3, y: '125',  g: 'NEXT_y', gmod: { Krons: "LLD", LetterK: true, Routes: [{ PogashenieLights: "6-6-6-1", PogashenieARS: "2227" }] } },       
+            { joint: '125', name: 'ПР-127',lenses:'BWY-YGR-ZW',guard: 80, service: 80, autostop: 1, y: '127а', g: 'NEXT_y', gmod: { Krons: "SLD", Routes: [{ PogashenieLights: "6-1" }] } },     
             { joint: '127а', name: '131',  lenses:  'YY-GR',   guard: 80, service: 80, autostop: 3, y: '131а', g: 'NEXT_y' },       
             { joint: '131а', name: '133',  lenses:  'YY-GR',   guard: 80, service: 80, autostop: 3, y: '133в',yg: 'NEXT_y', g: 'NEXT_yg' },          
             { joint: '133б', name: '135',  lenses:  'YY-GR',   guard: 80, service: 35, autostop: 3, left: true, shift: 10,y: '135', yg: 'NEXT_y', g: 'NEXT_yg' },          
@@ -310,7 +314,7 @@ lines['loopline']['1'] = [
         },
         joints: [
             { x: 0, name: '141', limit: 0 },
-            { x: 0 + 62.5, name: '143', limit: 60, later: { 60: 1 }, gmod: { Routes: [{ PogashenieARS: "0004" }] } },
+            { x: 0 + 62.5, name: '143', limit: 60, later: { 60: 1 }, gmod: { Approve0: true, Routes: [{ PogashenieARS: "0004" }] } },
             { x: 0 + 62.5 + 50, name: '145', limit: 60, later: { 40: 2, 60: 1 } },
             { x: 0 + 62.5 + 50 + 37.5, name: '145а', limit: 60, later: { 40: 1, 60: 1 } },
             { x: 0 + 62.5 + 50 + 37.5 + 62.5, name: '145б', limit: 60, later: { 40: 1, 60: 1 } },
