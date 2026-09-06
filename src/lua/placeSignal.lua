@@ -1,13 +1,14 @@
-R50_MODE = false
-RAYS = false
-NEW_ERA = true
-local pogashenie = 1
-local Dnepr = 1
-local sigType = 6
+ --local R50_MODE = false
+--local RAYS = false
+local NEW_ERA = true
+local pogashenie = true
+local TwoToSix = true
+local Dnepr = true
+local sigType = 8
 
 local angle_mirror = Angle(0, 180, 0)
 
-function getSignalTrackRerailTrace(trackID, x, isBack)
+local function getSignalTrackRerailTrace(trackID, x, isBack)
     local downVector = Vector(0, 0, -100) -- было -300
     local pos, dir = Metrostroi.GetTrackPosition(Metrostroi.Paths[trackID], x)
     if not pos or not dir then
@@ -31,7 +32,7 @@ function getSignalTrackRerailTrace(trackID, x, isBack)
     return rerailTrace
 end
 
-function getWallTraceLength(trackID, x, isBack)
+--[[function getWallTraceLength(trackID, x, isBack)
     local pos, dir = Metrostroi.GetTrackPosition(Metrostroi.Paths[trackID], x)
     local rightVector = Vector(300, 0, 0)
     local trace = util.TraceLine({
@@ -44,9 +45,9 @@ function getWallTraceLength(trackID, x, isBack)
     print(length)
     PrintTable(trace)
     return length, trace
-end
+end]]
 
-function getSignalTrackPositionAngles(rerailTrace)
+local function getSignalTrackPositionAngles(rerailTrace)
     if not rerailTrace then
         print("Rerail trace is nil")
         return
@@ -57,7 +58,7 @@ function getSignalTrackPositionAngles(rerailTrace)
     return position, angles
 end
 
-function getAutostopTrackPositionAngles(rerailTrace)
+--[[function getAutostopTrackPositionAngles(rerailTrace)
     if not rerailTrace then
         print("Rerail trace is nil")
         return
@@ -66,9 +67,9 @@ function getAutostopTrackPositionAngles(rerailTrace)
     local position = rerailTrace.centerpos
     local angles = rerailTrace.right:Angle()
     return position, angles
-end
+end]]
 
-function getAutostopNewEraTrackPositionAngles(rerailTrace)
+local function getAutostopNewEraTrackPositionAngles(rerailTrace)
     if not rerailTrace then
         print("Rerail trace is nil")
         return
@@ -79,7 +80,7 @@ function getAutostopNewEraTrackPositionAngles(rerailTrace)
     return position, angles
 end
 
-function getRayTrackPositionAngles(rerailTrace)
+local function getRayTrackPositionAngles(rerailTrace)
     if not rerailTrace then
         print("Rerail trace is nil")
         return
@@ -90,7 +91,7 @@ function getRayTrackPositionAngles(rerailTrace)
     return position, angles
 end
 
-function editParams(options)
+local function editParams(options)
 	local Params = {}
 	Params.SpawnRC = true
 	if options.Led then Params.Led = true end 
@@ -122,18 +123,17 @@ function editParams(options)
 	return Params
 end
 
-function placeSignal(position, angles, options)
+local function placeSignal(position, angles, options)
     local ent = ents.Create("gmod_track_signal")
     ent:SetPos(position)
     ent:SetAngles(angles)
     ent:Spawn()
-    ent.SignalType = options.SignalType ~= 0 and options.SignalType or sigType
+	if NEW_ERA then ent.Params = editParams(options) end
+    if NEW_ERA then ent.SignalType = options.SignalType ~= 0 and options.SignalType or sigType else ent.SignalType = 0 end
 	ent.RouteNumberSetup = options.RouteNumberSetup
     ent.NonAutoStop = options.NonAutoStop
 	ent.RouteNumber = options.RouteNumber
     ent.LensesStr = options.LensesStr
-	ent.Params = editParams(options)
-	ent.TwoToSix = options.TwoToSix
 	ent.Approve0 = options.Approve0
     ent.ARSOnly = options.ARSOnly
     ent.DoubleL = options.DoubleL
@@ -141,6 +141,7 @@ function placeSignal(position, angles, options)
     ent.Double = options.Double
     ent.Name = options.Name
     ent.Left = options.Left
+	ent.TwoToSix = TwoToSix
 	ent.Routes = options.Routes --({
     --    {
     --        NextSignal = "*",
@@ -157,7 +158,7 @@ function placeSignal(position, angles, options)
         if Dnepr then ent.Params.PogashenieDnepr = true end
     end
 
-    if R50_MODE then
+    --[[if R50_MODE then
         ent.IsolateSwitches = ent.IsolateSwitches or {}
     end
 
@@ -180,13 +181,13 @@ function placeSignal(position, angles, options)
 
     if R50_MODE and options.SignalName then
         ent.IsolateSwitches.SignalName = options.SignalName
-    end
+    end]]
 
     ent.Lenses = string.Explode("-", ent.LensesStr)
     ent:SendUpdate()
 end
 
-function placeAutostop(position, angles, options)
+--[[function placeAutostop(position, angles, options)
     local ent = ents.Create("gmod_scb_autostop")
     ent:SetPos(position)
     ent:SetAngles(angles)
@@ -198,9 +199,9 @@ function placeAutostop(position, angles, options)
     }
 
     ent:Spawn()
-end
+end]]
 
-function placeAutostopNewEra(position, angles, options)
+local function placeAutostopNewEra(position, angles, options)
     local ent = ents.Create("gmod_track_autostop")
     ent:SetPos(position)
     ent:SetAngles(angles + angle_mirror)
@@ -211,7 +212,7 @@ function placeAutostopNewEra(position, angles, options)
     ent:Spawn()
 end
 
-function placeRay(position, angles, options, trackID, trackX)
+--[[function placeRay(position, angles, options, trackID, trackX)
     local ent = ents.Create("gmod_vitromod_ray")
     ent:SetPos(position)
     ent:SetAngles(angles)
@@ -227,28 +228,28 @@ function placeRay(position, angles, options, trackID, trackX)
     --     SignalName = options.Name or "",
     -- }
     ent:Spawn()
-end
+end]]
 
-function importSignalData(fileName, trackID, deleteAutostop)
-    for k, v in pairs(ents.FindByClass("gmod_scb_autostop")) do
-        local signal = v.Signal
-        if signal and signal.TrackPosition and signal.TrackPosition.path.id == trackID then v:Remove() end
-    end
+local function importSignalData(fileName, trackID, deleteAutostop)
+    --for k, v in pairs(ents.FindByClass("gmod_scb_autostop")) do
+    --    local signal = v.Signal
+    --    if signal and signal.TrackPosition and signal.TrackPosition.path.id == trackID then v:Remove() end
+    --end
 
     if deleteAutostop then
-		for k, v in pairs(ents.FindByClass("gmod_track_autostop")) do
+		for _, v in pairs(ents.FindByClass("gmod_track_autostop")) do
 			local signal = v.Sig
 			if signal and signal.TrackPosition and signal.TrackPosition.path.id == trackID then v:Remove() end
 		end
 	end
 
-    for k, v in pairs(ents.FindByClass("gmod_track_signal")) do
+    for _, v in pairs(ents.FindByClass("gmod_track_signal")) do
         if v.TrackPosition and v.TrackPosition.path.id == trackID then v:Remove() end
     end
 
-    for k, v in pairs(ents.FindByClass("gmod_vitromod_ray")) do
-        if v.GetTrackID() == trackID then v:Remove() end
-    end
+    --for k, v in pairs(ents.FindByClass("gmod_vitromod_ray")) do
+    --    if v.GetTrackID() == trackID then v:Remove() end
+    --end
 
     Metrostroi.UpdateSignalEntities()
     Metrostroi.PostSignalInitialize()
@@ -262,22 +263,22 @@ function importSignalData(fileName, trackID, deleteAutostop)
         end
 
         if signal.IsAutostop then
-            if R50_MODE then
-                local position, angles = getAutostopTrackPositionAngles(rerailTrace)
-                placeAutostop(position, angles, signal)
-            elseif NEW_ERA then
+        --    if R50_MODE then
+        --        local position, angles = getAutostopTrackPositionAngles(rerailTrace)
+        --        placeAutostop(position, angles, signal)
+        --    elseif NEW_ERA then
                 local position, angles = getAutostopNewEraTrackPositionAngles(rerailTrace)
                 placeAutostopNewEra(position, angles, signal)
-            end
-        elseif signal.IsRay then
-            if not RAYS then continue end
-            local position, angles = getRayTrackPositionAngles(rerailTrace)
-            placeRay(position, angles, signal, trackID, signal.x)
+        --    end
+        --elseif signal.IsRay then
+        --    if not RAYS then continue end
+        --    local position, angles = getRayTrackPositionAngles(rerailTrace)
+        --    placeRay(position, angles, signal, trackID, signal.x)
         else
-            if signal.Invisible and not signal.HeadsXOffset then
-                local wallLength, wallTrace = getWallTraceLength(trackID, signal.x, signal.Back or false)
-                signal.HeadsXOffset = Either(wallTrace.Hit, wallLength - 154.25, 19)
-            end
+        --    if signal.Invisible and not signal.HeadsXOffset then
+        --        local wallLength, wallTrace = getWallTraceLength(trackID, signal.x, signal.Back or false)
+        --        signal.HeadsXOffset = Either(wallTrace.Hit, wallLength - 154.25, 19)
+        --    end
 
             local position, angles = getSignalTrackPositionAngles(rerailTrace)
             placeSignal(position, angles, signal)
@@ -288,19 +289,30 @@ function importSignalData(fileName, trackID, deleteAutostop)
     Metrostroi.PostSignalInitialize()
 end
 
-concommand.Add( "metrostroi_signal_import", function(ply, args)
+--[[concommand.Add( "metrostroi_signal_import", function(ply, args)
     if IsValid(ply) and not ply:IsAdmin() then return end
     importSignalData(args[1], tonumber(args[2]))
-end )
+end )]]
 
- --importSignalData("signals-imagine-1.json", 9, true)
+importSignalData("signals-sokolka-1.json", 1, true)
+importSignalData("signals-sokolka-2.json", 2, true)
+importSignalData("signals-sokolka-1_additional.json", 1, false)
+importSignalData("signals-sokolka-2_additional.json", 2, false)
+importSignalData("sokolka_UN3.json", 4, true)
+importSignalData("sokolka_UN4.json", 5, true)
+
+
+
+--importSignalData("signals-imagine-1.json", 9, true)
  --importSignalData("signals-imagine-2.json", 1, true)
  --importSignalData("signals-imagine-1_additional.json", 9, false)
  --importSignalData("signals-imagine-2_additional.json", 1, false)
---             importSignalData("signals-loopline-1.json", 1, true)
---             importSignalData("loopline_ADD1.json", 1, false)
---             importSignalData("signals-loopline-2.json", 2, true)
---             importSignalData("loopline_ADD2.json", 2, false)
+
+--importSignalData("signals-loopline-1.json", 1, true)
+--importSignalData("loopline_ADD1.json", 1, false)
+--importSignalData("signals-loopline-2.json", 2, true)
+--importSignalData("loopline_ADD2.json", 2, false)
+
 --             importSignalData("signals-crossline-redux_pony10-1.json", 6, true)
 --             importSignalData("signals-crossline-redux_pony10-2.json", 7, true)
 --             importSignalData("REDUX1_ADD.json", 6, false)
@@ -321,8 +333,5 @@ end )
 --importSignalData("signals-samara-2.json", 2, true)
 --importSignalData("SAMARA_1ADD.json", 1, false)
 --importSignalData("SAMARA_2ADD.json", 2, false)
-importSignalData("signals-kalina-1.json", 1, true)
--- importSignalData("signals-sokolka-1.json", 1, true)
--- importSignalData("signals-sokolka-2.json", 2, true)
--- importSignalData("signals-sokolka-1_additional.json", 1, false)
--- importSignalData("signals-sokolka-2_additional.json", 2, false)
+
+ --    importSignalData("signals-kalina-1.json", 1, true)
