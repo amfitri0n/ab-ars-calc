@@ -21,7 +21,7 @@ lines['crossline-redux_pony10']['2'] = [
             { x: 8.5 + 75 + 50, name: '6314', limit: 70, point: true },
             { x: 8.5 + 75 + 50 + 62.5, name: '6316', limit: 80, point: true, later: { 80: 1 } },
             { x: 8.5 + 75 + 50 + 62.5 + 37.5, name: '6318', limit: 80, later: { 60: 1, 70: 1, 80: 2 } },
-            { x: 8.5 + 75 + 50 + 62.5 + 37.5 + 125, name: '6320', limit: 80, point: true },
+            { x: 8.5 + 75 + 50 + 62.5 + 37.5 + 125, name: '6320', limit: 80, point: true, later: { 60: 1, 70: 1, 80: 1 } },
             { x: 8.5 + 75 + 50 + 62.5 + 37.5 + 125 + 137.5, name: '6322', limit: 80, point: true, later: { 70: 1, 80: 1 } },
             { x: 8.5 + 75 + 50 + 62.5 + 37.5 + 125 + 137.5 + 137.5, name: '6324', limit: 80, later: { 70: 1, 80: 1 } },
             { x: 8.5 + 75 + 50 + 62.5 + 37.5 + 125 + 137.5 + 137.5 + 137.5, name: '6326', limit: 80, point: true, later: { 70: 1, 80: 1 } },
@@ -30,7 +30,7 @@ lines['crossline-redux_pony10']['2'] = [
             { x: 1765 + 6 + 37.5 - 62.5 - 62.5 - 62.5 - 75 - 75 - 75 - 75 - 137.5, name: '6364', limit: 80, point: true, later: { 60: 1, 70: 1, 80: 1 } },
             { x: 1765 + 6 + 37.5 - 62.5 - 62.5 - 62.5 - 75 - 75 - 75 - 75, name: '6366', limit: 80 },
             { x: 1765 + 6 + 37.5 - 62.5 - 62.5 - 62.5 - 75 - 75 - 75, name: '6368', limit: 80, point: true },
-            { x: 1765 + 6 + 37.5 - 62.5 - 62.5 - 62.5 - 75 - 75, name: '6370', limit: 80 },
+            { x: 1765 + 6 + 37.5 - 62.5 - 62.5 - 62.5 - 75 - 75, name: '6370', limit: 80, later: { 60: -1 } },
             { x: 1765 + 6 + 37.5 - 62.5 - 62.5 - 62.5 - 75, name: '6372', limit: 80, point: true },
             { x: 1765 + 6 + 37.5 - 62.5 - 62.5 - 62.5, name: '6374', limit: 80, point: true },
             { x: 1765 + 6 + 37.5 - 62.5 - 62.5, name: '6376', limit: 80 },
@@ -76,7 +76,7 @@ lines['crossline-redux_pony10']['2'] = [
         joints: [
             { x: 6 + 37.5, name: '6380', limit: 0, point: true },
             { x: 6 + 37.5 + 50, name: '6212', limit: 80 },
-            { x: 6 + 37.5 + 50 + 50, name: '6214', limit: 80, point: true, later: { 70: 1 } },
+            { x: 6 + 37.5 + 50 + 50, name: '6214', limit: 80, point: true, later: { 70: 1, 80: 1 } },
             { x: 6 + 37.5 + 50 + 50 + 62.5, name: '6216', limit: 80, point: true, later: { 70: 1, 80: 1 } },
             { x: 6 + 37.5 + 50 + 50 + 62.5 + 62.5, name: '6218', limit: 80, point: true, later: { 80: 1 } },
             { x: 1917 + 1.5 + 12.5 + 12.5 - 62.5 - 50 - 75 - 50 - 112.5 - 100 - 137.5 - 137.5 - 137.5 - 137.5 - 137.5 - 137.5 - 137.5 - 137.5, name: '6220', limit: 80, later: { 80: 1 } },
@@ -100,15 +100,15 @@ lines['crossline-redux_pony10']['2'] = [
             { x: 1917 + 1.5 + 25 + 25 + 50 + 50 + 37.5 + 62.5, name: '6118', limit: 0, point: true },
         ],
         signals: [
-            { joint: '6212', name: '622м', lenses: 'YYGR', guard: 80, autostop: 3, y: '6222', g: 'NEXT_y',  gmod: { Pole: 1, SignalType: 8 } },
-            { joint: '6220', name: '624', lenses: 'YYGR', guard: 80, autostop: 1, y: '6260', g: 'NEXT_g',  gmod: { Pole: 1, SignalType: 8 } },
-            { joint: '6226', name: '626', lenses: 'YGR', guard: 80, autostop: 1, g: '6264',  gmod: { Pole: 1, SignalType: 8 } },
-            { joint: '6262', name: '628', lenses: 'YYGR', guard: 80, autostop: 3, left: true, y: '6268', g: 'NEXT_y',  gmod: { Pole: 1, SignalType: 8 } },
-            { joint: '6266', name: '6210м', lenses: 'YYGR', guard: 80, autostop: 3, left: true, y: '6270', g: 'NEXT_y',  gmod: { Pole: 1, SignalType: 8 } },
+            { joint: '6212', name:  '622м',   lenses:  'YYGR', guard: 80, autostop: 3,             y: '6222', g: 'NEXT_y',  gmod: { Pole: 1, SignalType: 8 } },
+            { joint: '6220', name:  '624',    lenses:  'YYGR', guard: 80, autostop: 1,             y: '6260', g: 'NEXT_g',  gmod: { Pole: 1, SignalType: 8 } },
+            { joint: '6226', name:  '626',    lenses:  'YGR',  guard: 80, autostop: 1,             g: '6264', gmod: { Pole: 1, SignalType: 8 } },
+            { joint: '6262', name:  '628',    lenses:  'YYGR', guard: 80, autostop: 3, left: true, y: '6268', yg: 'NEXT_y', g: 'NEXT_g',  gmod: { Pole: 1, SignalType: 8 } },
+            { joint: '6266', name:  '6210м',  lenses:  'YYGR', guard: 80, autostop: 3, left: true, y: '6270', g: 'NEXT_y',  gmod: { Pole: 1, SignalType: 8 } },
             { joint: '6268', name: 'ОЛ-6212', lenses: 'YYGRW', guard: 80, autostop: 3, left: true, y: '6274', yg: 'NEXT_y', g: 'NEXT_yg',  gmod: { Pole: 1, SignalType: 8 } },
             { joint: '6270', name: 'ОЛ-6214', lenses: 'YYGRW', guard: 80, autostop: 1, left: true, y: '6276', yg: 'NEXT_y', g: 'NEXT_yg',  gmod: { Pole: 1, SignalType: 8 } },
             { joint: '6272', name: 'ОЛ-6216', lenses: 'YYGRW', guard: 80, autostop: 1, left: true, shift: 20, y: '6278', yg: 'NEXT_y', g: 'NEXT_g',  gmod: { Pole: 1, SignalType: 8 } },
-            { joint: '6274', name: 'ОЛ-6218', lenses: 'BYYGRW', guard: 70, autostop: 1, y: '6280', g: 'NEXT_yg', 
+            { joint: '6274', name: 'ОЛ-6218', lenses: 'BYYGRW',guard: 70, autostop: 1, y: '6280', g: 'NEXT_yg', 
                 gmod: { 
                     Pole: 1, SignalType: 8, 
                     Routes:[
@@ -258,7 +258,7 @@ lines['crossline-redux_pony10']['2'] = [
             { x: 1588 - 75 - 87.5, name: '136', limit: 80 },
             { x: 1588 - 58, name: '134', limit: 70 },
             { x: 1588, name: '132', limit: 60, gmod: { Kanava: true, Routes: [{},{Switches: "OK2-",ARSCodes: "004", NextSignal: "*"}] } },
-            { x: 1588 + 75, name: '130', limit: 40, later: { 40: -1 } },
+            { x: 1588 + 75, name: '130', limit: 40 },
             { x: 1588 + 75 + 50, name: '128', limit: 0 },
             { x: 1588 + 75 + 50 + 100, name: '128а', limit: 0 },
         ],
@@ -286,31 +286,30 @@ lines['crossline-redux_pony10']['2'] = [
     },
     {
         name: 'Октябрьская',
-        arsDrawBreakpoint: 1,
+        arsDrawBreakpoint: 7,
         arsAllSteps: false,
         tStay: 25,
         K: 1,
         interval: 44,
         modes: {
             0: 'H',
-            350: '0',
-            700: 'H',
             1050: '0',
-            1391: 'T',
+            1352: 'T',
         },
         joints: [
             { x: 0, name: '132', limit: 0 },
-            { x: 0 + 75, name: '130', limit: 60, later: { 40: -1, 60: 2 } },
-            { x: 0 + 75 + 50, name: '128', limit: 80, gmod: {Routes: [{ARSCodes: "008"}]} },
-            { x: 0 + 75 + 50 + 100, name: '128а', limit: 80, gmod: {Routes: [{ARSCodes: "08"}]} },
-            { x: 0 + 75 + 50 + 250, name: '128б', limit: 80, later: { 80: -1 } },
-            { x: 0 + 75 + 50 + 250 + 275, name: '128в', limit: 80, later: { 60: 2, 40: 2, 80: 2 } },
+            { x: 0 + 75, name: '130', limit: 60, later: { 60: 2 } },
+            { x: 0 + 75 + 50, name: '128', limit: 80, later: { 40: 2, 60: 2, 70: 1, 80: 1 } },
+            { x: 0 + 75 + 50 + 100, name: '128а', limit: 80, later: { 40: 2, 60: 1, 70: 1, 80: 1 } },
+            { x: 0 + 75 + 50 + 250, name: '128б', limit: 80, later: { 40: 1, 60: 1, 70: 1 } },
+            { x: 0 + 75 + 50 + 250 + 275, name: '128в', limit: 80, later: { 60: 2, 40: 2, 70: 2, 80: 2 } },
             { x: 0 + 75 + 50 + 250 + 275 + 200, name: '126', limit: 80, later: { 70: 2, 40: 2, 60: 2, 80: 1 } },
-            { x: 1463 -0.5 - 87.5 - 112.5 - 162.5, name: '126а', limit: 80, gmod: {Routes: [{ARSCodes: "0068"}]} },
-            { x: 1463 -0.5 - 87.5 - 112.5, name: '124', limit: 80, gmod: {Routes: [{ARSCodes: "0068"}]} },
-            { x: 1463 -0.5 - 75, name: '122', limit: 70, gmod: {Routes: [{ARSCodes: "008"}]} },
-            { x: 1463 -0.5 + 75, name: '1120', limit: 40, later: { 40: -1 } },
-            { x: 1463 -0.5 + 75 + 50, name: '120', limit: 60 },
+            { x: 1463 -0.5 - 87.5 - 112.5 - 162.5, name: '126а', limit: 80, later: { 40: 1, 70: 1 } },
+            { x: 1463 -0.5 - 87.5 - 112.5, name: '124', limit: 80, later: { 40: 1, 70: 1, 80: -1 } },
+            { x: 1463 -0.5 - 75, name: '122', limit: 80, later: { 40: 1, 60: -1 } },
+            { x: 1463 -0.5 + 75, name: '1120', limit: 40 },
+            { x: 1463 -0.5 + 75 + 50, name: '120', limit: 0 },
+            { x: 1463 -0.5 + 75 + 50 + 200, name: '120а', limit: 0 },
         ],
         signals: [
             { joint: '130', name: '128м', lenses: 'YGR', guard: 35, autostop: 1, g: '128в', gmod: {Pole: 1,Led: true} },
@@ -326,34 +325,33 @@ lines['crossline-redux_pony10']['2'] = [
     },
     {
         name: 'Нахимовская',
-        arsDrawBreakpoint: 7,
+        arsDrawBreakpoint: 6,
         arsAllSteps: false,
         tStay: 25,
         K: 1,
         interval: 44,
         modes: {
             0: 'H',
-            350: '0',
-            700: 'H',
             1200: '0',
-            1743: 'T',
+            1715: 'T',
         },
         joints: [
             { x: -0.5 - 75, name: '122', limit: 0 },
-            { x: -0.5 + 75, name: '1120', limit: 60, gmod:{Routes: [{ARSCodes:"00446"}]} }, // 120
-            { x: -0.5 + 75 + 50, name: '120', limit: 80, gmod:{Routes:[{ARSCodes:"08"}]} },
-            { x: -0.5 + 75 + 50 + 200, name: '120а', limit: 80, gmod:{Routes:[{ARSCodes:"08"}]} },
-            { x: -0.5 + 75 + 50 + 200 + 200, name: '120б', limit: 80, gmod:{Routes:[{ARSCodes:"006668"}]} }, // 118
-            { x: -0.5 + 75 + 50 + 200 + 200 + 350, name: '118', limit: 80, gmod:{Routes:[{ARSCodes:"0000668"}]} }, // 116
-            { x: -0.5 + 75 + 50 + 200 + 200 + 350 + 225, name: '116', limit: 80, gmod:{Routes:[{ARSCodes:"066668"}]} },
-            { x: 1843 -6 - 100 - 175 - 300, name: '116а', limit: 80, gmod:{Routes:[{ARSCodes:"000068"}]} }, // 114
-            { x: 1843 -6 - 100 - 62.5 - 150 - 125, name: '116б', limit: 80, gmod:{Routes:[{ARSCodes:"06668"}]} }, 
-            { x: 1843 -6 - 100 - 62.5 - 150, name: '114', limit: 80, gmod:{Routes:[{ARSCodes:"00068"}]} }, // 112
-            { x: 1843 -6 - 100 - 62.5, name: '114а', limit: 70, gmod:{Routes:[{ARSCodes:"0008"}]} }, // 1110
-            { x: 1843 -6 - 100, name: '112', limit: 70, gmod:{Routes:[{ARSCodes:"0008"}]} },
-            { x: 1843 -6 - 37.5, name: '1110', limit: 70, gmod:{Routes:[{ARSCodes:"006"}], Kanava: true} },
-            { x: 1843 -6 + 75, name: '1110а', limit: 60, gmod:{Routes:[{ARSCodes:"06"}]} },
+            { x: -0.5 + 75, name: '1120', limit: 60, later: { 60: 2 } }, // 120
+            { x: -0.5 + 75 + 50, name: '120', limit: 80, later: { 40: 2, 60: 1, 70: 1, 80: 1 } },
+            { x: -0.5 + 75 + 50 + 200, name: '120а', limit: 80, later: { 40: 1 } },
+            { x: -0.5 + 75 + 50 + 200 + 200, name: '120б', limit: 80, later: { 40: 1, 60: 1, 70: 4, 80: 4 } }, // 118
+            { x: -0.5 + 75 + 50 + 200 + 200 + 350, name: '118', limit: 80, later: { 40: 3, 60: 3, 70: 4, 80: 4 } }, // 116
+            { x: -0.5 + 75 + 50 + 200 + 200 + 350 + 225, name: '116', limit: 80, later: { 40: 2, 60: 1, 70: 3, 80: 2 } },
+            { x: 1843 -6 - 100 - 175 - 300, name: '116а', limit: 80, later: { 40: 3, 60: 2, 70: 2, 80: 2 } }, // 114
+            { x: 1843 -6 - 100 - 62.5 - 150 - 125, name: '116б', limit: 80, later: { 40: 2, 60: 1, 70: 2, 80: 1 } }, 
+            { x: 1843 -6 - 100 - 62.5 - 150, name: '114', limit: 80, later: { 40: 2, 60: 1, 70: 1 } }, // 112
+            { x: 1843 -6 - 100 - 62.5, name: '114а', limit: 80, later: { 40: 2, 60: 1, 70: 1 } }, // 1110
+            { x: 1843 -6 - 100, name: '112', limit: 80, later: { 40: 1 } },
+            { x: 1843 -6 - 37.5, name: '1110', limit: 80, later: { 40: 1 }, gmod:{ Kanava: true } },
+            { x: 1843 -6 + 75, name: '1110а', limit: 40 },
             { x: 1843 -6 + 75 + 50, name: '110', limit: 0 },
+            { x: 1843 -6 + 75 + 50 + 300, name: '110а', limit: 0 },
         ],
         signals: [
             { joint: '1120', name: '120м', lenses: 'ZY-GR', guard: 35, autostop: 1, y: '120б', g: 'NEXT_y', gmod: {Led: true, Krons: "LL"} },
@@ -385,16 +383,16 @@ lines['crossline-redux_pony10']['2'] = [
             1498: 'T',
         },
         joints: [
-            { x: -6 - 37.5, name: '1110', limit: 0, gmod:{Routes:[{ARSCodes:"06"}], Left: true} },
-            { x: -6 + 75, name: '1110а', limit: 60, gmod:{Routes:[{ARSCodes:"04446"}]} }, // 110m
-            { x: -6 + 75 + 50, name: '110', limit: 80, gmod:{Routes:[{ARSCodes:"08"}]} },
-            { x: -6 + 75 + 50 + 300, name: '110а', limit: 80, gmod:{Routes:[{ARSCodes:"08"}]} },
-            { x: -6 + 75 + 50 + 300 + 250, name: '110б', limit: 80, gmod:{Routes:[{ARSCodes:"000068"}]} }, // 108
-            { x: -6 + 75 + 50 + 300 + 250 + 262.5, name: '108', limit: 80 },
-            { x: -6 + 75 + 50 + 300 + 250 + 262.5 + 125, name: '108а', limit: 70 },
-            { x: 1602 -8 - 62.5 - 125 - 112.5 - 100, name: '108б', limit: 70 },
-            { x: 1602 -8 - 62.5 - 125 - 112.5, name: '106', limit: 70 },
-            { x: 1602 -8 - 62.5 - 112.5, name: '1104', limit: 70 },
+            { x: -6 - 37.5, name: '1110', limit: 0, gmod:{Left: true} },
+            { x: -6 + 75, name: '1110а', limit: 60, later: { 60: 2 } }, // 110m
+            { x: -6 + 75 + 50, name: '110', limit: 80, later: { 40: 2, 60: 2, 70: 1, 80: 1 } },
+            { x: -6 + 75 + 50 + 300, name: '110а', limit: 80, later: { 40: 1, 60: 1 } },
+            { x: -6 + 75 + 50 + 300 + 250, name: '110б', limit: 80, later: { 40: 3, 60: 3, 70: 3, 80: 3 } }, // 108
+            { x: -6 + 75 + 50 + 300 + 250 + 262.5, name: '108', limit: 80, later: { 60: 1  } },
+            { x: -6 + 75 + 50 + 300 + 250 + 262.5 + 125, name: '108а', limit: 80 },
+            { x: 1602 -8 - 62.5 - 125 - 112.5 - 100, name: '108б', limit: 80 },
+            { x: 1602 -8 - 62.5 - 125 - 112.5, name: '106', limit: 80 },
+            { x: 1602 -8 - 62.5 - 112.5, name: '1104', limit: 80 },
             { x: 1602 -8 - 62.5, name: '104', limit: 70, later: { 40: 2 } },
             { x: 1602 -8, name: '102', limit: 60, gmod:{Routes:[{},{Switches: "PH2-", ARSCodes: "0004", NextSignal: "*"}]} },
             { x: 1602 -8 + 87.5, name: '102а', limit: 40 },
@@ -440,7 +438,7 @@ lines['crossline-redux_pony10']['2'] = [
             2049: 'T',
         },
         joints: [
-            { x: -8, name: '102', limit: 60 },
+            { x: -8, name: '102', limit: 0 },
             { x: -8 + 87.5, name: '102а', limit: 60 },
             { x: -8 + 87.5 + 25, name: '1102', limit: 70 },
             { x: -8 + 87.5 + 25 + 50, name: '100', limit: 70 },
@@ -507,16 +505,16 @@ lines['crossline-redux_pony10']['2'] = [
         joints: [
             { x: -8, name: '1086', limit: 0, gmod: { Kanava: true } },
             { x: -8 + 62.5, name: '86', limit: 60, gmod: { Kanava: true } },
-            { x: -8 + 62.5 + 25 + 37.5, name: '1084', limit: 60 },
-            { x: -8 + 62.5 + 25 + 37.5 + 75, name: '84', limit: 70, gmod:{Routes:[{ARSCodes:"08"}]} },
-            { x: -8 + 62.5 + 25 + 37.5 + 75 + 87.5, name: '84а', limit: 80, gmod:{Routes:[{ARSCodes:"08"}]} },
-            { x: -8 + 62.5 + 25 + 37.5 + 75 + 87.5 + 200, name: '84б', limit: 80, gmod:{Routes:[{ARSCodes:"008"}]} }, // 82
-            { x: -8 + 62.5 + 25 + 37.5 + 75 + 87.5 + 200 + 237.5, name: '82', limit: 80, gmod:{Routes:[{ARSCodes:"000068"}]} }, // 80
-            { x: -8 + 62.5 + 25 + 37.5 + 75 + 87.5 + 200 + 237.5 + 237.5, name: '80', limit: 80, gmod:{Routes:[{ARSCodes:"08"}]} },
-            { x: 1567 - 75 - 100 - 100 - 112.5, name: '80а', limit: 80, gmod:{Routes:[{ARSCodes:"00068"}]} }, // МД-78
-            { x: 1567 - 75 - 100 - 100, name: '80б', limit: 80, gmod:{Routes:[{ARSCodes:"00068"}]} }, // МД-76
-            { x: 1567 - 62.5 - 100, name: '78', limit: 80 },
-            { x: 1567 - 62.5, name: '76', limit: 70 },
+            { x: -8 + 62.5 + 25 + 37.5, name: '1084', limit: 60, later: { 60: 1 } },
+            { x: -8 + 62.5 + 25 + 37.5 + 75, name: '84', limit: 80, later: { 40: 1, 60: 1, 70: 1 } },
+            { x: -8 + 62.5 + 25 + 37.5 + 75 + 87.5, name: '84а', limit: 80, later: { 40: 1 } },
+            { x: -8 + 62.5 + 25 + 37.5 + 75 + 87.5 + 200, name: '84б', limit: 80, later: { 40: 1, 60: 1 } }, // 82
+            { x: -8 + 62.5 + 25 + 37.5 + 75 + 87.5 + 200 + 237.5, name: '82', limit: 80, later: { 40: 3, 60: 3, 70: 3, 80: 3 } }, // 80
+            { x: -8 + 62.5 + 25 + 37.5 + 75 + 87.5 + 200 + 237.5 + 237.5, name: '80', limit: 80, later: { 40: 2, 60: 2, 70: 2, 80: 1 } },
+            { x: 1567 - 75 - 100 - 100 - 112.5, name: '80а', limit: 80, later: { 40: 1, 60: 1, 70: 1 } }, // МД-78
+            { x: 1567 - 75 - 100 - 100, name: '80б', limit: 80, later: { 40: 1, 70: 1 } }, // МД-76
+            { x: 1567 - 62.5 - 100, name: '78', limit: 80, later: { 40: 1 } },
+            { x: 1567 - 62.5, name: '76', limit: 60 },
             { x: 1567, name: '74д', limit: 60, gmod: { Kanava: true, Routes: [{},{Switches: "MJ2-", ARSCodes: "0", NextSignal: "TCFIX0"}] } }, // 2я часть приема
             { x: 1567 + 62.5, name: '74', limit: 40, gmod:{Routes:[{ARSCodes:"2"}]} }, //md72
             { x: 1567 + 62.5 + 50, name: '72', limit: 0, gmod:{ Routes:[{ARSCodes:"4"}], RouteNumber: "2" } },
