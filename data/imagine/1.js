@@ -360,7 +360,7 @@ lines['imagine']['1'] = [
                     ] 
                 } 
             },
-           { joint: '315', name: 'ПИ317', lenses: 'BW-Rw', guard: 35, autostop: 1, 
+           { joint: '315', name: 'ПИ317', lenses: 'BW-Rw', autostop: 1, 
                 gmod: { 
                     ColorLens: true, noPogashenie: 0, 
                     Routes: [
