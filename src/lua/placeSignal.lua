@@ -8,6 +8,32 @@ local sigType = 8
 
 local angle_mirror = Angle(0, 180, 0)
 
+--[[local sokolka_st = {
+    TP211 = "BWY-GRW",
+    TP205 = "BG-RW",
+    TP3 = "BW-RW-M",
+    TPD = "BW-RW",
+    TPG = "BW-RW",
+    TPOP = "RR",
+    UNOP = "RR",
+    SPOP = "RR",
+    UZ207 = "BWG-RW-M",
+    UZ1 = "BW-RW",
+    UZ2 = "BW-RW",
+    UZD = "BYR-YW",
+    UN3 = "BW-RW-M",
+    UN4 = "BW-RW-M",
+    UN188 = "BG-RW",
+    UN177 = "BYG-RW",
+    UN181MG = "BWY-GRW",
+    UND = "BW-RW-M",
+    SP168 = "BYG-RW",
+    SP161M = "BYW-YRW",
+    SP163M = "BWY-GRW",
+    SPD = "BYW-YRW",
+    SPV = "BW-RW-M",
+}]]
+
 local function getSignalTrackRerailTrace(trackID, x, isBack)
     local downVector = Vector(0, 0, -100) -- было -300
     local pos, dir = Metrostroi.GetTrackPosition(Metrostroi.Paths[trackID], x)
@@ -128,12 +154,21 @@ local function placeSignal(position, angles, options)
     ent:SetPos(position)
     ent:SetAngles(angles)
     ent:Spawn()
-	if NEW_ERA then ent.Params = editParams(options) end
-    if NEW_ERA then ent.SignalType = options.SignalType ~= 0 and options.SignalType or sigType else ent.SignalType = 0 end
+	--if NEW_ERA then 
+        ent.Params = editParams(options)
+        ent.SignalType = options.SignalType ~= 0 and options.SignalType or sigType 
+    --else 
+    --    ent.SignalType = 0 
+    --end
 	ent.RouteNumberSetup = options.RouteNumberSetup
     ent.NonAutoStop = options.NonAutoStop
 	ent.RouteNumber = options.RouteNumber
-    ent.LensesStr = options.LensesStr
+    --if sokolka_st[options.Name] and not NEW_ERA then 
+    --    ent.LensesStr = sokolka_st[options.Name]
+    --else
+        ent.LensesStr = options.LensesStr
+    --end
+    --if not NEW_ERA and string.sub(options.Name, 1, 1) == 'M' then ent.LensesStr = "RR" end
 	ent.Approve0 = options.Approve0
     ent.ARSOnly = options.ARSOnly
     ent.DoubleL = options.DoubleL
@@ -141,6 +176,7 @@ local function placeSignal(position, angles, options)
     ent.Double = options.Double
     ent.Name = options.Name
     ent.Left = options.Left
+    --if not NEW_ERA and options.Kanava then ent.Left = true end
 	ent.TwoToSix = TwoToSix
 	ent.Routes = options.Routes --({
     --    {
@@ -149,7 +185,7 @@ local function placeSignal(position, angles, options)
     --        Lights = options.Lights,
     --    },
     --})
-    if options.noPogashenie ~= 0 and (not options.ARSOnly or Dnepr) and pogashenie then
+    if NEW_ERA and options.noPogashenie ~= 0 and (not options.ARSOnly or Dnepr) and pogashenie then
         ent.Params.PogashenieCommand = "suka"
         --ent.Params.PogashenieEnabled = false
         if not ent.Routes[1].PogashenieLights and not options.ARSOnly then 
@@ -300,6 +336,7 @@ importSignalData("signals-sokolka-1_additional.json", 1, false)
 importSignalData("signals-sokolka-2_additional.json", 2, false)
 importSignalData("sokolka_UN3.json", 4, true)
 importSignalData("sokolka_UN4.json", 5, true)
+importSignalData("sokolka_TP3.json", 7, true)
 
 
 
