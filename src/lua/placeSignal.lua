@@ -8,7 +8,7 @@ local sigType = 8
 
 local angle_mirror = Angle(0, 180, 0)
 
---[[local sokolka_st = {
+local sokolka_st = {
     TP211 = "BWY-GRW",
     TP205 = "BG-RW",
     TP3 = "BW-RW-M",
@@ -32,7 +32,7 @@ local angle_mirror = Angle(0, 180, 0)
     SP163M = "BWY-GRW",
     SPD = "BYW-YRW",
     SPV = "BW-RW-M",
-}]]
+}
 
 local function getSignalTrackRerailTrace(trackID, x, isBack)
     local downVector = Vector(0, 0, -100) -- было -300
@@ -106,7 +106,7 @@ local function getAutostopNewEraTrackPositionAngles(rerailTrace)
     return position, angles
 end
 
-local function getRayTrackPositionAngles(rerailTrace)
+--[[local function getRayTrackPositionAngles(rerailTrace)
     if not rerailTrace then
         print("Rerail trace is nil")
         return
@@ -115,7 +115,7 @@ local function getRayTrackPositionAngles(rerailTrace)
     local position = rerailTrace.centerpos
     local angles = rerailTrace.forward:Angle()
     return position, angles
-end
+end]]
 
 local function editParams(options)
 	local Params = {}
@@ -154,21 +154,21 @@ local function placeSignal(position, angles, options)
     ent:SetPos(position)
     ent:SetAngles(angles)
     ent:Spawn()
-	--if NEW_ERA then 
+	if NEW_ERA then 
         ent.Params = editParams(options)
         ent.SignalType = options.SignalType ~= 0 and options.SignalType or sigType 
-    --else 
-    --    ent.SignalType = 0 
-    --end
+    else 
+        ent.SignalType = 0 
+    end
 	ent.RouteNumberSetup = options.RouteNumberSetup
     ent.NonAutoStop = options.NonAutoStop
 	ent.RouteNumber = options.RouteNumber
-    --if sokolka_st[options.Name] and not NEW_ERA then 
-    --    ent.LensesStr = sokolka_st[options.Name]
-    --else
+    if sokolka_st[options.Name] and not NEW_ERA then 
+        ent.LensesStr = sokolka_st[options.Name]
+    else
         ent.LensesStr = options.LensesStr
-    --end
-    --if not NEW_ERA and string.sub(options.Name, 1, 1) == 'M' then ent.LensesStr = "RR" end
+    end
+    if not NEW_ERA and string.sub(options.Name, 1, 1) == 'M' then ent.LensesStr = "RR" end
 	ent.Approve0 = options.Approve0
     ent.ARSOnly = options.ARSOnly
     ent.DoubleL = options.DoubleL
@@ -176,7 +176,7 @@ local function placeSignal(position, angles, options)
     ent.Double = options.Double
     ent.Name = options.Name
     ent.Left = options.Left
-    --if not NEW_ERA and options.Kanava then ent.Left = true end
+    if not NEW_ERA and options.Kanava then ent.Left = true end
 	ent.TwoToSix = TwoToSix
 	ent.Routes = options.Routes --({
     --    {

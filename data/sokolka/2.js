@@ -44,7 +44,7 @@ lines['sokolka']['2'] = [
         signals: [
 			{ joint: '2012', name: '202М', lenses: 'GR', gmod: {Routes: [{Lights: " "}], Krons: "L", LetterK: true} },
             { joint: '2072', name: 'УЗ-2', lenses: 'BGRw', 
-                gmod: { OW: "[4 0 -10]", Routes: [
+                gmod: { RouteNumberSetup: "D34", OW: "[4 0 -10]", Routes: [
                         {Lights: "3-3-1", Switches: "UZ2+", RouteName: "UZ2-2"},
                         {Lights: "3", ARSCodes: "2", Switches: "UZ2-"} 
                     ]
